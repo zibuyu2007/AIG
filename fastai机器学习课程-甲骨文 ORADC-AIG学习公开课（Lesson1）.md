@@ -165,6 +165,7 @@ df, y, nas = proc_df(df_raw, 'SalePrice')
 >对于数值类型的，首先检查是不是null，如果是，就创建一个列名代后缀_na的新列，缺失值用1表示，其他用0（1:True,0:False)。然后将会用中位数替代缺失值。分类类型的变量不需要此处理，因为Pandas已经自动把它们设为-1了，fastai库会给分类类型code+1，所以就是从0开始了。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181124122533878.png)
 
+### 2.3 预处理
 现在终于可以给提交数据到随机森林了！
 ```python
 m = RandomForestRegressor(n_jobs=-1) #为每个cpu创建一个单独的job
@@ -193,6 +194,7 @@ X_train.shape, y_train.shape, X_valid.shape
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181125174127308.png)
 
+### 2.4 基本模型
 ```python
 def rmse(x,y): return math.sqrt(((x-y)**2).mean())
 
@@ -201,6 +203,10 @@ def print_score(m):
                 m.score(X_train, y_train), m.score(X_valid, y_valid)]
     if hasattr(m, 'oob_score_'): res.append(m.oob_score_)
     print(res)
+    
+m = RandomForestRegressor(n_jobs=-1)
+%time m.fit(X_train, y_train)
+print_score(m)
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181125174406562.png)
 
