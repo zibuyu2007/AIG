@@ -34,18 +34,11 @@ https://github.com/fastai/fastai
 <br>
 ### 1.2 安装fastai库
 
-GPU
-
-```cmd
-!pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cu92/torch_nightly.html
-!pip install fastai
+```python
+!pip install fastai==0.7.0
+!pip install torchtext==0.2.3
 ```
-CPU
-```cmd
-!pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
-!pip install fastai
-```
-看看安装到哪里去了：
+（对于fastai2018年的ML课程,要使用fastai 0.7版本。）接下来看看安装到哪里去了：
 ```cmd
 !pip show fastai
 ```
